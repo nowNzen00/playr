@@ -30,6 +30,7 @@ function Body() {
             className="swipe"
             key={users.name}
             preventSwipe={["up"]}
+            style={{ height: 100, width: 100 }}
             onSwipe={(dir) => swiped(dir, users.name)}
             onCardLeftScreen={() => outOfFrame(users.name)}
           >

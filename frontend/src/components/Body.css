@@ -9,7 +9,21 @@
   border-radius: 20px;
   background-size: cover;
   background-position: center;
+  border: 1px solid red;
+  display: grid;
+  grid-template-rows: 10%, 18%, 18, 18%, 18%, 18%;
+  grid-template-areas:
+    "a"
+    "b"
+    "c"
+    "d"
+    "e"
+    "f";
 }
+/* .card img {
+  width: 100%;
+  height: 10%;
+} */
 
 .card_container {
   display: flex;
@@ -26,4 +40,8 @@
   bottom: 0;
   margin: 10px;
   color: #fff;
+}
+
+.card_container .grid-item:nth-child(1) {
+  grid-area: a;
 }
