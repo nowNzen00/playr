@@ -1,6 +1,6 @@
-import React, { useState } from "react"
-import "./Body.css"
-import TinderCard from "react-tinder-card"
+import React, { useState } from "react";
+import "./Body.css";
+import TinderCard from "react-tinder-card";
 
 function Body() {
   const [users, setUsers] = useState([
@@ -9,18 +9,18 @@ function Body() {
       url: "https://dazedimg-dazedgroup.netdna-ssl.com/903/azure/dazed-prod/1270/7/1277818.jpg",
     },
     {
-      name: "Lily Muni",
-      url: "https://img.i-scmp.com/cdn-cgi/image/fit=contain,width=1098,format=auto/sites/default/files/styles/1200x800/public/d8/images/methode/2020/05/11/088376fa-8dd4-11ea-a674-527cfdef49ee_image_hires_110653.jpg?itok=J68HSRo_&v=1589166420",
+      name: "Lewis Hamilton",
+      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg/440px-Lewis_Hamilton_2016_Malaysia_2.jpg",
     },
-  ])
+  ]);
 
   const swiped = (direction, nameToDelte) => {
-    console.log("removing " + nameToDelte)
-  }
+    console.log("removing " + nameToDelte);
+  };
 
   const outOfFrame = (name) => {
-    console.log(name + " left the screen")
-  }
+    console.log(name + " left the screen");
+  };
 
   return (
     <div className="playrCards">
@@ -44,7 +44,7 @@ function Body() {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
-export default Body
+export default Body;

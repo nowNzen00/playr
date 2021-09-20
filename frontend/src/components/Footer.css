@@ -1,13 +1,16 @@
 .buttons {
   width: 100%;
   position: fixed;
-  bottom: 10vh;
+  bottom: 5vh;
   display: flex;
   justify-content: space-evenly;
 }
 
-.swipeLeft_icon .rewind_icon .swipeRight_icon {
+.swipeLeft_icon,
+.rewind_icon,
+.swipeRight_icon {
   background-color: white;
   box-shadow: 0 10px 53px 0px rgba(0, 0, 0, 0.3);
-  padding: 3vw;
+  /* padding: 3vw; */
+  border-radius: 50px;
 }
