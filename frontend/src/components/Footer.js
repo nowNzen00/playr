@@ -8,7 +8,7 @@ function Footer() {
   return (
     <div className="buttons">
       <IconButton>
-        <KeyboardArrowLeftIcon fontSize="large" clasName="swipeLeft_icon" />
+        <KeyboardArrowLeftIcon fontSize="large" className="swipeLeft_icon" />
       </IconButton>
       <IconButton>
         <ReplayIcon fontSize="large" className="rewind_icon" />
