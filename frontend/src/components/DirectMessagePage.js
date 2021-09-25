@@ -1,7 +1,11 @@
-import React from "react"
+import React from "react";
 
 function DirectMessagePage() {
-  return <div></div>
+  return (
+    <div>
+      <h1>Direct Message</h1>
+    </div>
+  );
 }
 
-export default DirectMessagePage
+export default DirectMessagePage;
