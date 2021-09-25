@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from "react";
-import "./Body.css";
-import TinderCard from "react-tinder-card";
-import axios from "./axios";
+import React, { useState, useEffect } from "react"
+import "./Body.css"
+import TinderCard from "react-tinder-card"
+import axios from "axios"
 
 function Body() {
-  const [users, setUsers] = useState([]);
-
+  const [users, setUsers] = useState([])
+  async function fetchData() {
+    const req = await axios.get("http://localhost:8001/playr/cards")
+    setUsers(req.data)
+  }
   useEffect(() => {
-    async function fetchData() {
-      const req = await axios.get("/playr/cards");
-      setUsers(req.data);
-    }
-  }, []);
+    fetchData()
+  }, [])
+  console.log(users)
   const swiped = (direction, nameToDelte) => {
-    console.log("removing " + nameToDelte);
-  };
+    console.log("removing " + nameToDelte)
+  }
 
   const outOfFrame = (name) => {
-    console.log(name + " left the screen");
-  };
+    console.log(name + " left the screen")
+  }
 
   return (
     <div className="playrCards">
@@ -42,7 +43,7 @@ function Body() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export default Body;
+export default Body

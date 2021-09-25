@@ -12,7 +12,6 @@ const connection_url = `mongodb+srv://admin:xzvCOUMA12fH9df3@cluster0.nzh5r.mong
 //Middleware
 app.use(express.json());
 app.use(Cors());
-
 //DB config
 mongoose.connect(connection_url, {
   useNewUrlParser: true,
@@ -34,7 +33,7 @@ app.post("/playr/cards", (req, res) => {
   });
 });
 
-app.get("/playr/cards", (req, res) => {
+app.get("/playr/cards", async (req, res) => {
   Cards.find((err, data) => {
     if (err) {
       res.status(500).send(err);
