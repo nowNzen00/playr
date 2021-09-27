@@ -1,11 +1,10 @@
-import React from "react";
-import "./Header.css";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import AdjustIcon from "@mui/icons-material/Adjust";
-import InsertCommentIcon from "@mui/icons-material/InsertComment";
-import IconButton from "@mui/material/IconButton";
-import { Link } from "react-router-dom";
-import ListIcon from "@mui/icons-material/List";
+import React from "react"
+import "./Header.css"
+import AdjustIcon from "@mui/icons-material/Adjust"
+import InsertCommentIcon from "@mui/icons-material/InsertComment"
+import IconButton from "@mui/material/IconButton"
+import { Link } from "react-router-dom"
+import ListIcon from "@mui/icons-material/List"
 
 function header() {
   return (
@@ -26,7 +25,7 @@ function header() {
         </IconButton>
       </Link>
     </div>
-  );
+  )
 }
 
-export default header;
+export default header

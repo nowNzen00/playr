@@ -1,12 +1,12 @@
-import React from "react";
-import "./LoginForm.css";
-import PersonIcon from "@mui/icons-material/Person";
-import LockIcon from "@mui/icons-material/Lock";
-import { BrowserRouter as Link } from "react-router-dom";
+import React from "react"
+import "./LoginForm.css"
+import PersonIcon from "@mui/icons-material/Person"
+import LockIcon from "@mui/icons-material/Lock"
+import { Link } from "react-router-dom"
 
 function LogginForm() {
   return (
-    <body>
+    <div className="">
       <div className="login-container">
         <div className="box">
           <h1>Log in</h1>
@@ -16,7 +16,7 @@ function LogginForm() {
               type="text"
               name="username"
               id="username"
-              autocomplete="off"
+              autoComplete="off"
               placeholder="Username"
             />
             <LockIcon className="icon" />
@@ -24,23 +24,25 @@ function LogginForm() {
               type="text"
               name="password"
               id="password"
-              autocomplete="off"
+              autoComplete="off"
               placeholder="Password"
             />
           </div>
           <p className="reset-password">Forgot Password?</p>
-          <div className="login-button">
-            <Link to="/">
+          <Link to="/">
+            <div className="login-button">
               <button className="button">Log in</button>
-            </Link>
+            </div>
+          </Link>
+          <div className="signUp-question">
             <p className="signup">
               First time here? <span>Sign Up</span>
             </p>
           </div>
         </div>
       </div>
-    </body>
-  );
+    </div>
+  )
 }
 
-export default LogginForm;
+export default LogginForm
