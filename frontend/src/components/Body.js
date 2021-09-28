@@ -9,6 +9,7 @@ function Body() {
     getOtherUsers()
   }, [getOtherUsers])
 
+  console.log(new Date().getTime(), { users })
   const swiped = (direction, nameToDelete) => {
     console.log("removing " + nameToDelete)
   }
@@ -25,10 +26,8 @@ function Body() {
             onSwipe={(dir) => swiped(dir, user.name)}
             onCardLeftScreen={() => updateSwipedRight(user._id)}
           >
-            <div
-              style={{ backgroundImage: `url(${user.imgUrl})` }}
-              className="card"
-            >
+            <div className="card">
+              <img src={user.imgUrl} alt="img" />
               <h3>{user.name}</h3>
             </div>
           </TinderCard>
