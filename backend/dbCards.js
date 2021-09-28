@@ -5,7 +5,8 @@ const cardSchema = mongoose.Schema({
   imgUrl: String,
   description: String,
   interest: String,
-  matches: String,
+  matches: Array,
+  swipedRight: Array,
 })
 
 export default mongoose.model("cards", cardSchema)
