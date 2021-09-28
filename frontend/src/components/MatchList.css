@@ -1,0 +1,22 @@
+.MatchList h1 {
+  color: black;
+}
+
+.MatchList .matched-tag {
+  /* border: 1px solid red; */
+  /* height: 100px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2em;
+  margin-bottom: 0.5em;
+  background-color: #eee;
+}
+.MatchList button {
+  padding: 0.75em;
+  border: none;
+  background-color: #31a3ff;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+}

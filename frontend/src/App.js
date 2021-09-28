@@ -10,6 +10,11 @@ import DirectMessagePage from "./components/DirectMessagePage"
 import ProfilePage from "./components/ProfilePage"
 
 function App() {
+  const matchedUsers = [
+    { id: 1, name: "Bob" },
+    { id: 1, name: "John" },
+    { id: 1, name: "Lisa" },
+  ]
   return (
     <Router>
       <div className="App">
@@ -18,7 +23,7 @@ function App() {
             <LogginForm />
           </Route>
           <Route path="/MatchList">
-            <MatchList />
+            <MatchList users={matchedUsers} />
           </Route>
           <Route path="/DirectMessagePage">
             <DirectMessagePage />

@@ -1,10 +1,14 @@
-import React from "react";
+import React from "react"
+import "./MatchList.css"
+import MatchListItem from "./MatchListItem"
 
-function MatchList() {
+function MatchList({ users = [] }) {
   return (
-    <div>
-      <h1>Match List</h1>
+    <div className="MatchList">
+      {users.map((user) => (
+        <MatchListItem key={user.id} user={user} />
+      ))}
     </div>
-  );
+  )
 }
-export default MatchList;
+export default MatchList
