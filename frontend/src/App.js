@@ -1,4 +1,4 @@
-import REACT from "react"
+import React from "react"
 import "./App.css"
 import Header from "./components/Header"
 import Body from "./components/Body"
@@ -8,37 +8,35 @@ import LogginForm from "./components/LogginForm"
 import MatchList from "./components/MatchList"
 import DirectMessagePage from "./components/DirectMessagePage"
 import ProfilePage from "./components/ProfilePage"
+import { UserProvider } from "./components/UserProvider"
 
 function App() {
-  const matchedUsers = [
-    { id: 1, name: "Bob" },
-    { id: 1, name: "John" },
-    { id: 1, name: "Lisa" },
-  ]
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route path="/LogginForm">
-            <LogginForm />
-          </Route>
-          <Route path="/MatchList">
-            <MatchList users={matchedUsers} />
-          </Route>
-          <Route path="/DirectMessagePage">
-            <DirectMessagePage />
-          </Route>
-          <Route path="/ProfilePage">
-            <ProfilePage />
-          </Route>
-          <Route exact path="/">
-            <Header />
-            <Body />
-            <Footer />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <UserProvider>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/LogginForm">
+              <LogginForm />
+            </Route>
+            <Route path="/MatchList">
+              <MatchList />
+            </Route>
+            <Route path="/DirectMessagePage">
+              <DirectMessagePage />
+            </Route>
+            <Route path="/ProfilePage">
+              <ProfilePage />
+            </Route>
+            <Route exact path="/">
+              <Header />
+              <Body />
+              <Footer />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </UserProvider>
   )
 }
 

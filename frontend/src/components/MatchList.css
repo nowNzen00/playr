@@ -1,7 +1,9 @@
 .MatchList h1 {
   color: black;
 }
-
+.MatchList {
+  color: black;
+}
 .MatchList .matched-tag {
   /* border: 1px solid red; */
   /* height: 100px; */
