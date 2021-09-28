@@ -44,48 +44,39 @@ app.get("/playr/cards", async (req, res) => {
 })
 
 app.get("/playr/cards/:userId/:matchedUserId", async (req, res) => {
-  console.log(req.params.userId)
-  console.log(req.params.matchedUserId)
   // update userId's doc.swipedRight with matchedUserId
   const { userId, matchedUserId } = req.params
-  const userPromise = new Promise((resolve, reject) =>
-    Cards.findOne({ _id: userId }, {}, (err, user) => {
-      const swipedRight = Array.from(
-        new Set([...user.swipedRight, matchedUserId])
-      )
-      Cards.updateOne(
-        { _id: userId },
-        { swipedRight },
-        // { swipedRight: [] },
-        (err, data) => {
-          if (err) {
-            console.log(err)
-            reject(err)
-          } else {
-            console.log(data)
+
+  function updateUserArray(userIdToUpdate, userIdToInsert, arr) {
+    return new Promise((resolve, reject) => {
+      Cards.findOne({ _id: userIdToUpdate }, {}, (err, user) => {
+        Cards.updateOne(
+          { _id: userIdToUpdate },
+          {
+            [arr]: Array.from(
+              new Set([...user[arr], userIdToInsert].filter((i) => i !== ""))
+            ),
+          },
+          (err, data) => {
+            if (err) {
+              console.log(err)
+              reject(err)
+            }
             resolve(data)
           }
-        }
-      )
-    })
-  )
-  const matchedUserPromise = new Promise((resolve, reject) =>
-    Cards.findOne({ _id: matchedUserId }, {}, (err, user) => {
-      const matches = Array.from(new Set([...user.matches, userId]))
-      Cards.updateOne({ _id: matchedUserId }, { matches }, (err, data) => {
-        if (err) {
-          console.log(err)
-          reject(err)
-        } else {
-          console.log(data)
-          resolve(data)
-        }
+        )
       })
     })
+  }
+  const currentUserPromise = updateUserArray(
+    userId,
+    matchedUserId,
+    "swipedRight"
   )
+  const matchedUserPromise = updateUserArray(matchedUserId, userId, "matches")
 
-  Promise.all([userPromise, matchedUserPromise]).then((values) => {
-    res.send("hello")
+  Promise.all([matchedUserPromise, currentUserPromise]).then((values) => {
+    res.send("ok")
   })
 })
 
@@ -101,46 +92,45 @@ app.put("/playr/cards", async (req, res) => {
   )
 })
 
+function createUserPromisesForArray(arr) {
+  let retval = []
+  for (let userId of arr) {
+    retval.push(
+      getUserPromiseForIdAndNameById(userId, "createUserPromisesForArray")
+    )
+  }
+  return retval
+}
+function getUserPromiseForIdAndNameById(id, caller) {
+  return new Promise((resolve, reject) =>
+    Cards.findOne({ _id: id }, {}, (err, user) => {
+      if (err) {
+        reject(err)
+      }
+      resolve({ id, name: user.name, imgUrl: user.imgUrl })
+    })
+  )
+}
 app.get("/playr/:id", async (req, res) => {
   const { id } = req.params
-  Cards.findOne({ _id: id }, {}, (err, user) => {
-    // create an iterable for all of the promises
-    const matchPromises = []
-    const swipePromises = []
-    for (let userMatchId of user.matches) {
-      // create a promise in the promise iterable
-      matchPromises.push(
-        new Promise((resolve, reject) =>
-          Cards.findOne({ id: userMatchId }, {}, (err, user) => {
-            if (err) {
-              reject(err)
-            }
-            resolve({ id: id, name: user })
-          })
-        )
-      )
-    }
-    for (let userSwipeId of user.swipedRight) {
-      // create a promise in the promise iterable
-      matchPromises.push(
-        new Promise((resolve, reject) =>
-          Cards.findOne({ _id: userSwipeId }, {}, (err, user) => {
-            if (err) {
-              reject(err)
-            }
-            resolve({ id: user.id, name: user })
-          })
-        )
-      )
-    }
+  Cards.findOne({ id: id }, {}, (err, user) => {
+    const matchPromises = createUserPromisesForArray(user.matches)
+    const swipePromises = createUserPromisesForArray(user.swipedRight)
+
     if (err) {
       res.status(500).send(err)
     }
-    Promise.all([matchPromises, swipePromises]).then((data) => {
-      // recombine all of the data from matchPromises and swipePromises
-      // into the user before sending it back
-      console.log(data)
-      res.send({ ...user, matches: [], swipedRight: [] })
+    Promise.all([...matchPromises, ...swipePromises]).then((data) => {
+      const matches = []
+      const swipedRight = []
+      for (let i = 0; i < data.length; i++) {
+        if (i < matches.length) {
+          matches.push(data[i])
+        } else {
+          swipedRight.push(data[i])
+        }
+      }
+      res.send({ ...user, matches, swipedRight })
     })
   })
 })

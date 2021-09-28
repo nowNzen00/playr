@@ -5,17 +5,21 @@ import { useUser } from "./UserProvider"
 
 function MatchList() {
   const { user } = useUser()
-
-  const myMatches = user?.matches
-  console.log({ user })
-  console.log(myMatches)
+  console.log(user)
   return (
     <div className="MatchList">
-      {myMatches?.length ? (
-        myMatches?.map((user) => <MatchListItem key={user.id} user={user} />)
-      ) : (
-        <div>No matches yet</div>
-      )}
+      <div>
+        {user?.swipedRight?.length ? (
+          <div>
+            <h3>Matches</h3>
+            {user?.swipedRight?.map((user) => (
+              <MatchListItem key={user.id} user={user} />
+            ))}
+          </div>
+        ) : (
+          <div>No matches yet</div>
+        )}
+      </div>
     </div>
   )
 }
