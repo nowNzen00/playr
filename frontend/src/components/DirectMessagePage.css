@@ -1,0 +1,44 @@
+.under-construction {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: black;
+}
+
+.under-construction .hammer {
+  height: 200px;
+  width: 200px;
+  color: orange;
+}
+
+.under-construction h1 {
+  font-size: 300px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.home-button {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.construction-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #31a3ff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0.8;
+  transition: 0.2s all;
+  cursor: pointer;
+}
