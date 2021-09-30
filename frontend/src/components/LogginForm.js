@@ -29,11 +29,16 @@ function LogginForm() {
             />
           </div>
           <p className="reset-password">Forgot Password?</p>
+
           <Link to="/">
             <div className="login-button">
               <button className="button">Log in</button>
             </div>
           </Link>
+          <div className="spotify-login">
+            <button className="spotify-button">Log in with Spotify</button>
+          </div>
+
           <div className="signUp-question">
             <p className="signup">
               First time here? <span>Sign Up</span>

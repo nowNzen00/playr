@@ -107,7 +107,7 @@ function getUserPromiseForIdAndNameById(id, caller) {
       if (err) {
         reject(err)
       }
-      resolve({ id, name: user.name, imgUrl: user.imgUrl })
+      resolve({ id, name: user.name, imgUrl: user.imgUrl, songs: user.songs })
     })
   )
 }

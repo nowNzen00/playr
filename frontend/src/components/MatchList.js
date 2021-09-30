@@ -2,6 +2,10 @@ import React from "react"
 import MatchListItem from "./MatchListItem"
 import "./MatchList.css"
 import { useUser } from "./UserProvider"
+import HomeIcon from "@mui/icons-material/Home"
+import AccountCircleIcon from "@mui/icons-material/AccountCircle"
+import IconButton from "@mui/material/IconButton"
+import { Link } from "react-router-dom"
 
 function MatchList() {
   const { user } = useUser()
@@ -19,6 +23,18 @@ function MatchList() {
         ) : (
           <div>No matches yet</div>
         )}
+      </div>
+      <div className="matchListItemsFooter">
+        <Link to="/">
+          <IconButton>
+            <HomeIcon className="home-icon" fontSize="large" />
+          </IconButton>
+        </Link>
+        <Link to="/ProfilePage">
+          <IconButton>
+            <AccountCircleIcon className="profile-icon" fontSize="large" />
+          </IconButton>
+        </Link>
       </div>
     </div>
   )

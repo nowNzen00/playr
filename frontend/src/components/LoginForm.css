@@ -20,7 +20,7 @@ h1 {
 }
 
 .box {
-  height: 390px;
+  height: 450px;
   width: 350px;
   font-size: 16px;
   padding: 40px 40px;
@@ -64,7 +64,8 @@ input:focus {
 }
 
 .login-button,
-.signUp-question {
+.signUp-question,
+.spotify-login {
   margin-top: 25px;
   display: flex;
   justify-content: center;
@@ -83,6 +84,7 @@ input:focus {
   font-weight: 600;
   opacity: 0.8;
   transition: 0.2s all;
+  cursor: pointer;
 }
 .button:hover {
   opacity: 1;
@@ -98,4 +100,19 @@ input:focus {
 }
 a {
   text-decoration: none;
+}
+
+.spotify-button {
+  display: block;
+  width: 70%;
+  padding: 15px;
+  background-color: rgb(27, 185, 84);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0.8;
+  transition: 0.2s all;
+  cursor: pointer;
 }

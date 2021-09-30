@@ -13,7 +13,6 @@ function Body() {
   const swiped = (direction, nameToDelete) => {
     console.log("removing " + nameToDelete)
   }
-
   return (
     <div className="playrCards">
       <div className="card_container">
@@ -29,6 +28,23 @@ function Body() {
             <div className="card">
               <img src={user.imgUrl} alt="img" />
               <h3>{user.name}</h3>
+
+              <div>
+                {" "}
+                {user.songs.map((x) => {
+                  return (
+                    <iframe
+                      key={x}
+                      src={x}
+                      width="100%"
+                      height="75px"
+                      frameBorder="0"
+                      allowfullscreen=""
+                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    ></iframe>
+                  )
+                })}
+              </div>
             </div>
           </TinderCard>
         ))}
