@@ -23,7 +23,11 @@ function Body() {
             preventSwipe={["up"]}
             style={{ height: 100, width: 100 }}
             onSwipe={(dir) => swiped(dir, user.name)}
-            onCardLeftScreen={() => updateSwipedRight(user._id)}
+            onCardLeftScreen={(direction) => {
+              if (direction !== "left") {
+                updateSwipedRight(user._id)
+              }
+            }}
           >
             <div className="card">
               <img src={user.imgUrl} alt="img" />

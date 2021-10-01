@@ -100,6 +100,12 @@ input:focus {
 }
 a {
   text-decoration: none;
+  color: white;
+  cursor: default;
+}
+
+.signUp-link {
+  cursor: pointer;
 }
 
 .spotify-button {

@@ -8,6 +8,7 @@ import LogginForm from "./components/LogginForm"
 import MatchList from "./components/MatchList"
 import DirectMessagePage from "./components/DirectMessagePage"
 import ProfilePage from "./components/ProfilePage"
+import SignUp from "./components/SignUp"
 import { UserProvider } from "./components/UserProvider"
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <Router>
         <div className="App">
           <Switch>
-            <Route path="/LogginForm">
+            <Route exact path="/LogginForm">
               <LogginForm />
             </Route>
             <Route path="/MatchList">
@@ -28,7 +29,10 @@ function App() {
             <Route path="/ProfilePage">
               <ProfilePage />
             </Route>
-            <Route exact path="/">
+            <Route path="/SignUp">
+              <SignUp />
+            </Route>
+            <Route path="/">
               <Header />
               <Body />
               <Footer />

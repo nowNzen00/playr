@@ -21,7 +21,7 @@ function LogginForm() {
             />
             <LockIcon className="icon" />
             <input
-              type="text"
+              type="password"
               name="password"
               id="password"
               autoComplete="off"
@@ -40,9 +40,11 @@ function LogginForm() {
           </div>
 
           <div className="signUp-question">
-            <p className="signup">
-              First time here? <span>Sign Up</span>
-            </p>
+            <Link to="/SignUp">
+              <p className="signup">
+                First time here? <span className="signUp-link">Sign Up</span>
+              </p>
+            </Link>
           </div>
         </div>
       </div>
